@@ -1,0 +1,65 @@
+.custom_date_dd-wrapper{
+    position: relative;
+}
+
+.custom_date_dd-btn{
+    padding: 8px 10px;
+    background-color: $color-primary;
+    border: transparent;
+    color: $white;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px $border-color;
+    width: 115px;
+    cursor: pointer;
+    p{
+        margin: 0 0 0 5px ;
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+        text-transform: capitalize;
+    }
+    svg{
+        width: 20px;
+    }
+}
+
+.custom_date_dd_options{
+    position: absolute;
+    top: 100%;
+    margin-top: 5px;
+    width: 100%;
+    z-index: 9;
+    border-radius: 5px;
+    max-height: 500px;
+    overflow-y: auto;
+    background-color: $white;
+
+    button{
+        width: 100%;
+        padding: 7px 10px;
+        border: none;
+        background-color: transparent;
+        font-size: 14px;
+        border-bottom: solid 1px rgba(116, 132, 226, 0.4);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+        overflow: hidden;
+        text-transform: capitalize;
+        
+        &:last-child{
+            border-bottom: none;
+        }
+
+        &.active{
+            background-color: rgba(116, 132, 226, 0.4);
+            color: $color-primary;
+        }
+
+        &:hover{
+            color: $color-primary;
+        }
+    }
+}

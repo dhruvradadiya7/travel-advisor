@@ -1,0 +1,95 @@
+
+
+// Row Style
+.exe_main-content_table-row {
+    width: calc(100% + 20px);
+    padding: 5px 10px;
+    margin-left: -10px;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: all 0.4s ease;
+    position: relative;
+
+    .exe_main-content_table-col {
+        &.col-1 {
+            width: calc(calc(100% / 12) * 2);
+        }
+        &.col-2 {
+            width: calc(calc(100% / 12) * 4);
+        }
+        p {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+
+    &:hover, &.edit{
+        background-color: rgba(238, 238, 238, 0.5);
+        .exe_main-content_table-row-actions{
+            display: flex;
+        }
+    }
+
+    .exe_main-content_table-row-actions{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 35px;
+        transition: all 0.4s ease;
+        display: none;
+        .exe_main-content_table-row-action{
+            background-color: transparent;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            color: $white;
+            box-shadow: 2px 2px 4px $border-color;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 0.8;
+            margin: 5px;
+            &:hover{
+                opacity: 1;
+            }
+            &.edit-btn{
+                background-color: $color-success;
+            }
+            &.delete-btn{
+                background-color: $color-error;
+            }
+            &.check-btn{
+                background-color: $color-primary;
+            }
+        }
+    }
+
+
+    // Edit Input
+    .exe_main-content_table-col_input{
+        background-color: #E5E5E5;
+        border: solid 1px transparent;
+        margin: 0 0 0 -5px;
+        padding: 0 5px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 4px;
+        flex-grow: 1;
+        width: 90%;
+        &::placeholder{
+            color: $color-text-secondary;
+            text-transform: capitalize;
+            font-weight: 500;
+        }
+        &:focus, &:focus-within{
+            color: $color-primary;
+            border-color: $color-primary;
+            background-color: $white;
+            outline: none;
+        }
+        &.max-width{
+            max-width: 100px;
+        }
+    }
+}

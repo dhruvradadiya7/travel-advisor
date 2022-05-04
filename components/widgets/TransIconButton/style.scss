@@ -1,0 +1,25 @@
+.trans-icon-button {
+    @include custom-styled-button;
+    background-color: transparent;
+    margin: auto;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 300;
+    font-family: "Jaldi";
+    display: flex;
+
+    svg {
+        margin: auto 0 auto 14px;
+    }
+}
+
+@include mobileStyle {
+    .trans-icon-button {
+        font-size: 14px;
+        line-height: 24px;
+
+        svg {
+            display: none;
+        }
+    }
+}

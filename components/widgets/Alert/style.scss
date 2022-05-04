@@ -1,0 +1,29 @@
+.global-alert_wrapper {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    padding: 15px 20px;
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px $border-color;
+    z-index: 999;
+    &.error {
+        color: $color-error;
+        background-color: #ffe7e7;
+    }
+
+    &.success {
+        color: $color-success;
+        background-color: #d0ffd0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    svg{
+        cursor: pointer;
+    }
+}

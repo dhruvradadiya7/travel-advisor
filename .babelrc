@@ -1,0 +1,5 @@
+// Defined babel configuration with custom module resolvers 
+// Map particular directory or file to minimize relative path while importing
+{
+    "presets": ["next/babel"]
+}
