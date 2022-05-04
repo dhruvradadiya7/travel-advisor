@@ -1,0 +1,32 @@
+.auth-sidebar_container {
+    width: 40%;
+    max-width: 580px;
+    background-color: $color-primary;
+    position: relative;
+    height: 100vh;
+    color: $white;
+
+    background-image: url('/images/auth-back.png');
+    background-size: cover;
+
+    h2 {
+        font-size: 48px;
+        font-weight: 400;
+        line-height: 60px;
+        margin: -40px 40px 0 40px;
+    }
+
+    p {
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 37px;
+        margin: 20px 40px 80px 40px;
+    }
+
+}
+
+@include mobileStyle {
+    .auth-sidebar_container {
+        display: none;
+    }
+}

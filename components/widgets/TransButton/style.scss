@@ -1,0 +1,15 @@
+.trans-button{
+    @include custom-styled-button;
+    background-color: transparent;
+    margin: auto 0;
+    font-size: 24px;
+    font-weight: 300;
+    font-family: "Jaldi";
+    display: flex;
+}
+
+@include mobileStyle{
+    .trans-button{
+        font-size: 14px;
+    }
+}

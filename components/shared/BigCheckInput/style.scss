@@ -1,0 +1,62 @@
+.check-input-box{
+    position: relative;
+    display: flex;
+    
+    .checkbox-container {
+        width: 30px;
+        height: 30px;
+        border: solid 2px $border-darker;
+        border-radius: 4px;
+        display: flex;
+        cursor: pointer;
+        transition: $transition;
+
+        .check-icon{
+            margin: auto;
+            color: $white;
+            transform: scale(1.5);
+        }
+
+        &:hover {
+            border-color: $color-primary-darker;
+        }
+
+        &.active-container {
+            background-color: $color-primary;
+            border-color: $border-active;
+
+            &:hover {
+                background-color: $color-primary-darker;
+            }
+        }
+    }
+
+    .title{
+        font-size: 24px;
+        font-weight: 300;
+        color: $color-text-primary;
+        margin: auto 16px;
+    }
+}
+
+@include mobileStyle{
+    .check-input-box{
+        
+        .checkbox-container {
+            width: 20px;
+            height: 20px;
+    
+            .check-icon{
+                transform: scale(1);
+            }
+    
+        }
+    
+        .title{
+            font-size: 16px;
+            font-weight: 300;
+            color: $color-text-primary;
+            margin: auto 12px;
+        }
+    }
+}

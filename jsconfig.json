@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "utils/*": [
+                "./utils/*"
+            ],
+            "components/*": [
+                "./components/*"
+            ],
+            "containers/*": [
+                "./containers/*"
+            ],
+            "shared/*": [
+                "./components/shared/*"
+            ],
+            "widgets/*": [
+                "./components/widgets/*"
+            ],
+            "images/*": [
+                "./public/images/*"
+            ],
+            "icons/*": [
+                "./icons/*"
+            ],
+        }
+    }
+}
