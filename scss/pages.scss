@@ -2,10 +2,23 @@
 // Login
 @import "../components/Signin/style.scss";
 
+//Landing
+@import "../components/Landing/style.scss";
+
+//Dashboard
+@import "../components/Dashboard/style.scss";
+
+//Guidelines
+@import "../components/Guidelines/style.scss";
+
+//Admin
+@import "../components/Admin/style.scss";
+
 // Shared
 @import "../components/shared/AuthSidebar/style.scss";
 @import "../components/shared/BigCheckInput/style.scss";
 @import "../components/shared/BigInput/style.scss";
+@import "../components/shared/Header/style.scss";
 
 // Widgets
 @import "../components/widgets/Alert/style.scss";
