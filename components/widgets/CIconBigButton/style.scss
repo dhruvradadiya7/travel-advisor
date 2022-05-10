@@ -1,14 +1,14 @@
 .colored-icon-big-button{
     @include custom-styled-button;
     background-color: $color-primary;
-    margin: auto;
+    margin: 0 10px;
     font-size: 24px;
     font-family: "Jaldi";
     font-weight: 300;
     display: flex;
     width: 100%;
     justify-content: center;
-    padding: 16px;
+    padding: 14px;
     border-radius: 6px;
     color: $white;
     transition: $transition;

@@ -23,6 +23,14 @@
         margin: 20px 40px 80px 40px;
     }
 
+    a{
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+        font-size: 18px;
+        color: $white;
+        text-decoration: none;
+    }
 }
 
 @include mobileStyle {
