@@ -32,7 +32,10 @@ const Header = () => {
         )}
         {isAdmin ? (
           <>
-            <TransButton onClick={() => router.push("/manage-sources")} title="Manage Sources" />
+            <TransButton
+              onClick={() => router.push("/manage-sources")}
+              title="Manage Sources"
+            />
           </>
         ) : (
           ""
@@ -43,6 +46,10 @@ const Header = () => {
           </>
         ) : (
           <>
+            <TransButton
+              onClick={() => router.push("/register")}
+              title="Register"
+            />
             <TransButton
               onClick={() => router.push("/signin")}
               title="Signin"
