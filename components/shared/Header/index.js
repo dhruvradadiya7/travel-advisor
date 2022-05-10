@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import TransButton from "components/widgets/TransButton";
 import { useAuth } from "utils/AuthContext";
 import { useEffect, useState } from "react";
-const Header = () => {
+const Header = ({ reverse }) => {
   const router = useRouter();
   const { currentUser, isAdmin, logout } = useAuth();
   const [uid, setUId] = useState(null);
@@ -12,7 +12,7 @@ const Header = () => {
   }, [currentUser?.uid]);
 
   return (
-    <div className="header">
+    <div className={`header ${reverse && "reverse"}`}>
       <div className="header-logo_box" onClick={() => router.push("/")}>
         <img src="/images/logo-ta.svg" alt="TA" />
         <h1>Travel Advisor</h1>
