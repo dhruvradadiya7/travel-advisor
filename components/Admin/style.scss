@@ -1,9 +1,8 @@
 .admin-body {
     width: 100%;
-    margin-left: 2%;
 }
 
-.airport-header {
+/* .airport-header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -96,5 +95,111 @@
         background-color: $color-primary;
         color: #fff;
         margin-left: 71% ;
+    }
+}
+
+
+ */
+
+.manager-table {
+    width: 80%;
+    margin: 40px auto 0 auto;
+
+    .header {
+        width: 100%;
+
+        .new-btn {
+            width: 130px;
+            justify-content: space-around;
+            background-color: $color-primary;
+            border: none;
+            border-radius: 5px;
+            height: 40px;
+            .add-lbl {
+                margin-top: 0px;
+                color: #fff;
+                font-weight: 400;
+            }
+            .add-btn {
+                width: 20px;
+                color: #fff;
+            }
+        }
+    }
+
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        .row {
+            width: 100%;
+            border-color: $color-primary;
+            border-style: solid;
+            border-width: 0 1px 1px 1px;
+
+            &:last-child {
+                border-radius: 0 0 5px 5px;
+            }
+
+            .col {
+                width: 25%;
+                padding: 10px 20px;
+                align-self: stretch;
+                p {
+                    margin: 0;
+                    color: $color-primary;
+                    font-size: 16px;
+                }
+            }
+
+            &.table-header {
+                background-color: $color-primary;
+                border-radius: 5px 5px 0 0;
+
+                p {
+                    color: $white;
+                }
+            }
+
+            input {
+                width: 100%;
+                padding: 3px 10px;
+            }
+        }
+
+        .action-btn {
+            box-shadow: 1px 2px 3px #ccc;
+            padding: 8px;
+            border-radius: 12px;
+            margin: 0 10px 0 0;
+            color: $white;
+            opacity: 0.8;
+            transition: all ease 0.4s;
+            cursor: pointer;
+
+            &.edit {
+                background-color: $color-success;
+            }
+
+            &.delete {
+                background-color: $color-error;
+            }
+
+            &.check {
+                background-color: $color-success;
+            }
+
+            &.close {
+                background-color: $color-text-secondary;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .block .action-btn{
+            width: 15px;
+            height: 15px;
+        }
     }
 }

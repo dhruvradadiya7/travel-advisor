@@ -4,6 +4,8 @@ import '../scss/global.scss';
 import '../scss/fonts.scss';
 import '../scss/pages.scss';
 import AuthProvider, { useAuth } from 'utils/AuthContext';
+import { useEffect } from 'react';
+import setAccessToken, { getAccessToken } from 'containers/FlightsFunctions';
 /*
  * Custom app component to modify app rendering
  */
@@ -15,6 +17,12 @@ const Wrapper = ({ children }) => {
     router.push('/');
     return '';
   }
+
+  useEffect(() => {
+    if (!getAccessToken()) {
+      setAccessToken();
+    }
+  }, []);
   return (
     <div className="exe_main-container frss">
       {children}
