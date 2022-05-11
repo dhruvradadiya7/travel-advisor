@@ -5,7 +5,6 @@ import { useAuth } from "utils/AuthContext";
 import Header from "components/shared/Header";
 import DateSelector from "components/widgets/DateSelector";
 import BigInput from "components/shared/BigInput";
-import ColoredIconBigButton from "components/widgets/CIconBigButton";
 import { ReactComponent as Search } from 'icons/search.svg';
 
 const Landing = () => {
