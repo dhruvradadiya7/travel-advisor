@@ -1,14 +1,17 @@
 .header {
-    width:95%;
+    width: 90%;
     height: 60px;
-    padding: 5px 20px;
+    padding: 5px;
     top: 0;
     left: 0;
-    margin: 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    h1{
+        color: $color-primary;
+    }
 }
 .header-logo_box {
     cursor : pointer;
@@ -28,5 +31,20 @@ img{
     
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+
+    .trans-button{
+        margin-left: 60px;
+        justify-content: flex-end;
+        color: $color-primary;
+    }
+}
+
+.reverse{
+    h1{
+        color: #fff;
+    }
+    .header_actions .trans-button{
+        color: #fff;
+    }
 }
