@@ -11,6 +11,7 @@
         .container {
             padding: 0 90px;
             width: calc(100% - 180px);
+            flex-direction: column;
             .auth-header {
                 display: flex;
                 justify-content: space-between;
@@ -27,6 +28,10 @@
                 button {
                     margin-right: 0;
                 }
+            }
+
+            .colored-icon-big-button {
+                margin: 0;
             }
 
             .content {
