@@ -11,6 +11,7 @@
     align-items: center;
 }
 .header-logo_box {
+    cursor : pointer;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -29,4 +30,3 @@ img{
     flex-direction: row;
     justify-content: space-evenly;
 }
-

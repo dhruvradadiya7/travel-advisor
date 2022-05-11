@@ -5,6 +5,8 @@ import { useAuth } from "utils/AuthContext";
 import Header from "components/shared/Header";
 import DateSelector from "components/widgets/DateSelector";
 import BigInput from "components/shared/BigInput";
+import ColoredIconBigButton from "components/widgets/CIconBigButton";
+import { ReactComponent as Search } from 'icons/search.svg';
 
 const Landing = () => {
   return (
@@ -17,8 +19,9 @@ const Landing = () => {
         <div className="frbs search-bar">
             <BigInput type={'date'} placeholder={'departing from'}/>
             <BigInput type={'date'} placeholder={'going to'}/>
-            <BigInput />
-            <BigInput/>
+            <BigInput type={'text'} placeholder={'departing from'}/>
+            <BigInput type={'text'} placeholder={'going to'}/>
+            <ColoredIconBigButton title="Search" Icon={Search} />
         </div>
       </div>
       </div>
