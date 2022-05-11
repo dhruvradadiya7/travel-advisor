@@ -3,7 +3,7 @@ const ColoredIconBigButton = ({
 }) => (
   <button type="button" className="colored-icon-big-button" onClick={onClick} disabled={loading}>
     {title}
-    <Icon />
+    {Icon && <Icon />}
   </button>
 );
 
