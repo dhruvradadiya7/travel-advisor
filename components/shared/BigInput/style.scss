@@ -1,11 +1,11 @@
-.input-box{
+.input-box {
     position: relative;
     margin-bottom: 30px;
 
-    &.half{
+    &.half {
         width: calc(50% - 10px);
     }
-    .title{
+    .title {
         display: flex;
         position: absolute;
         background-color: white;
@@ -18,10 +18,10 @@
         transition: $transition;
         margin: 0;
 
-        &:hover{
+        &:hover {
             color: $color-primary-darker;
         }
-        .required-mark{
+        .required-mark {
             color: $color-error;
             margin-left: 2px;
         }
@@ -36,25 +36,79 @@
         font-size: 24px;
         transition: $transition;
         font-weight: 300;
-        font-family: 'Jaldi';
+        font-family: "Jaldi";
         color: $color-text-primary;
-        &::placeholder{
+        &::placeholder {
             font-weight: 300;
-            font-family: 'Jaldi';
+            font-family: "Jaldi";
             color: $color-text-secondary;
         }
-        &:hover, &:focus, &:active{
+        &:hover,
+        &:focus,
+        &:active {
             border-color: $border-active;
+        }
+    }
+    input:focus ~ .input-box_dd-options, .input-box_dd-options:hover{
+        display: inherit;
+    }
+
+    // Options
+    .input-box_dd-options {
+        width: 100%;
+        margin-top: 5px;
+        position: absolute;
+        z-index: 4;
+        max-height: 500px;
+        overflow-y: auto;
+        top: 100%;
+        border-radius: 8px;
+        border: solid 2px $border-color;
+        display: none;
+        box-shadow: 1px 2px 3px #ccc;
+        .input-box_dd-option {
+            width: 100%;
+            background-color: $white;
+            box-shadow: none;
+            border-width: 0 0 1px 0;
+            padding: 5px 10px;
+            transition: all ease 0.3s;
+            cursor: pointer;
+
+            &:last-child{
+                border-width: 0;
+            }
+            p {
+                margin: 0;
+            }
+            h4 {
+                margin: 1px 0 0 0;
+                font-size: 16px;
+                line-height: 20px;
+            }
+            .input-box_dd-option-country {
+                font-size: 14px;
+                line-height: 18px;
+            }
+            .input-box_dd-option-code {
+                font-size: 18px;
+                line-height: 25px;
+                font-weight: 600;
+            }
+
+            &:hover, &.active{
+                background-color: #d1d5e6;
+            }
         }
     }
 }
 
-@include mobileStyle{
-    .input-box{
-        &.half{
+@include mobileStyle {
+    .input-box {
+        &.half {
             width: 100%;
         }
-        .title{
+        .title {
             left: 30px;
             font-size: 14px;
         }
