@@ -13,5 +13,13 @@ const setAccessToken = async () => {
   }
 };
 
+export const resetAccessToken = async (afterAction) => {
+  localStorage.clear();
+  await setAccessToken();
+  if (afterAction) {
+    afterAction();
+  }
+};
+
 export const getAccessToken = () => localStorage.getItem('fl_access_token');
 export default setAccessToken;
