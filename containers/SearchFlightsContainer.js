@@ -7,7 +7,7 @@ const fetchAvalibaleFilghts = async (departingDate, goingToDate, departingLocati
         resolve(flights);
     } catch (e) {
         if (e.response.status === 401) {
-            resetAccessToken(fetchAvalibaleFilghts());
+            resetAccessToken(() => fetchAvalibaleFilghts());
         } else {
             reject(e);
         }
