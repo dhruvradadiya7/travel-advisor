@@ -7,6 +7,9 @@ import fetchAvalibaleFilghts from 'containers/SearchFlightsContainer';
 import getObj from 'utils/fetchfb';
 import Alert from 'components/widgets/Alert';
 import dayjs from 'dayjs';
+import Guidelines from 'components/Guidelines';
+import Tours from './components/Tours';
+import Flights from './components/Flights';
 
 const Landing = () => {
   const [departingDate, setDepartingDate] = useState('');
@@ -15,6 +18,7 @@ const Landing = () => {
   const [goingToLocation, setGoingToLocation] = useState('');
   const [airpotCodes, setAirportCode] = useState([]);
   const [searchedFlights, setSearchedFlights] = useState({});
+  const [searchedState, setSearchedState] = useState(true);
   const [error, setError] = useState('');
 
   const handleSearch = async () => {
@@ -41,6 +45,7 @@ const Landing = () => {
     try {
       const flights = await fetchAvalibaleFilghts(departingDate, goingToDate, departingLocation, goingToLocation);
       setSearchedFlights(flights.data);
+      setSearchedState(true);
     } catch (e) {
       if (e.response.data?.errors?.[0]) {
         setError(e.response.data?.errors[0]?.detail);
@@ -60,6 +65,28 @@ const Landing = () => {
   useEffect(() => {
     getAirportCodes();
   }, []);
+
+  if (searchedState) {
+    return (
+      <div className="landing-body">
+        <div className="landing">
+          <Header />
+          <div className="fccs search-2">
+            <div className="frcc search-bar-2">
+              <BigInput required type="date" placeholder="Travel Date" title="Travel Date" value={departingDate} onChange={setDepartingDate} />
+              <BigInput type="date" placeholder="Returning Date" title="Returning Date" value={goingToDate} onChange={setGoingToDate} />
+              <BigInputDD required options={airpotCodes} placeholder="From" title="From" value={departingLocation} onChange={setDepartingLocation} />
+              <BigInputDD required options={airpotCodes} placeholder="To" title="To" value={goingToLocation} onChange={setGoingToLocation} />
+              <ColoredIconBigButton title="search" onClick={() => handleSearch()} />
+            </div>
+          </div>
+          <Tours />
+          <Flights />
+          <Guidelines />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="landing-body">
