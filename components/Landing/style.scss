@@ -245,6 +245,13 @@
         color: #fff;
         margin: auto 10px;
     }
+
+    &.white{
+        background-color: $background-over;
+        .add-lbl{
+            color: $color-primary;
+        }
+    }
 }
 
 .search-flight_detailed-component {
@@ -278,6 +285,68 @@
             font-weight: 500;
             margin: 0 10px;
             text-transform: capitalize;
+        }
+    }
+}
+
+
+
+// Tour Components
+.searched-card_tour-component{
+    width: 100%;
+    margin-top: 20px;
+
+    .searched-card_tour{
+        width: 100%;
+        box-shadow: 1px 2px 3px #ccc;
+        border-radius: 5px;
+        background-color: $white;
+        margin: 10px 0;
+
+        img {
+            padding: 0;
+            width: 300px;
+            height: 200px;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .searched-card_tour-content{
+            width: calc(80% - 300px);
+            align-self: stretch;
+            padding: 20px;
+
+            h3{
+                font-size: 24px;
+                line-height: 30px;
+                color: $color-primary;
+                font-weight: 700;
+                margin: 0;
+            }
+
+            p{
+                font-size: 18px;
+                line-height: 26px;
+                color: $color-text-content;
+                margin: 10px 0 20px 0;
+            }
+
+            h4{
+                font-size: 18px;
+                line-height: 26px;
+                color: $color-text-content;
+                margin: 0;
+            }
+        }
+
+        .searched-card_tour-action-box{
+            width: 20%;
+            max-width: 150px;
+            margin: auto 20px auto auto;
+
+            .global_save-btn{
+                width: 140px;
+                margin: 10px 0;
+            }
         }
     }
 }
