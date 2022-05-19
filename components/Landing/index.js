@@ -7,7 +7,7 @@ import fetchAvalibaleFilghts from 'containers/SearchFlightsContainer';
 import getObj from 'utils/fetchfb';
 import Alert from 'components/widgets/Alert';
 import dayjs from 'dayjs';
-import Guidelines from 'components/Guidelines';
+import Guidelines from './components/Guidelines';
 import Tours from './components/Tours';
 import Flights from './components/Flights';
 
