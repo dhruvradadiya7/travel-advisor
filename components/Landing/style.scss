@@ -165,6 +165,7 @@
         margin: 0;
         text-transform: capitalize;
     }
+
 }
 
 .searched-flight_commut-info {
@@ -183,7 +184,7 @@
         color: $color-text-content;
         font-weight: 600;
         margin: 0;
-        text-transform: capitalize;
+        text-transform: lowercase;
 
         position: absolute;
         bottom: 100%;

@@ -4,9 +4,10 @@ import Header from 'components/shared/Header';
 import BigInput, { BigInputDD } from 'components/shared/BigInput';
 import AuthSidebar from 'components/shared/AuthSidebar';
 import fetchAvalibaleFilghts from 'containers/SearchFlightsContainer';
-import getObj from 'utils/fetchfb';
+import getObj, { createNUpdateObj, pushObj } from 'utils/fetchfb';
 import Alert from 'components/widgets/Alert';
 import dayjs from 'dayjs';
+import { useAuth } from 'utils/AuthContext';
 import Guidelines from './components/Guidelines';
 import Tours from './components/Tours';
 import Flights from './components/Flights';
@@ -20,6 +21,8 @@ const Landing = () => {
   const [searchedFlights, setSearchedFlights] = useState({});
   const [searchedState, setSearchedState] = useState(true);
   const [error, setError] = useState('');
+  const [savedFlights, setSavedFlight] = useState({});
+  const { currentUser } = useAuth();
 
   const handleSearch = async () => {
     // validations here
@@ -62,9 +65,43 @@ const Landing = () => {
     }
   };
 
+  const getSavedFlights = async () => {
+    if (currentUser?.uid) {
+      try {
+        const result = await getObj(`${currentUser?.uid}/flights`);
+        setSavedFlight(result);
+      } catch {
+        setSavedFlight({});
+      }
+    }
+  };
+
+  const validateSaveStatus = (obj) => Object.values(savedFlights).includes(JSON.stringify(obj));
+
   useEffect(() => {
     getAirportCodes();
+    getSavedFlights();
   }, []);
+
+  const handleSaveFlights = async (flightObj) => {
+    if (currentUser?.uid) {
+      try {
+        if (!validateSaveStatus(flightObj)) {
+          const segments = flightObj?.itineraries[0]?.segments;
+          const updateSegments = segments.map((e) => ({ ...e, carrierCode: searchedFlights?.dictionaries?.carriers[e.carrierCode] || e.carrierCode }));
+          flightObj.itineraries[0].segments = updateSegments;
+          await pushObj(`${currentUser?.uid}/flights`, JSON.stringify(flightObj));
+        } else {
+          const id = Object.entries(savedFlights).find(([id, value]) => value === JSON.stringify(flightObj))?.[0];
+          await createNUpdateObj(`${currentUser?.uid}/flights/${id}`, null);
+        }
+      } finally {
+        getSavedFlights();
+      }
+    } else {
+      setError('Signin is required to save flights!');
+    }
+  };
 
   if (searchedState) {
     return (
@@ -81,7 +118,7 @@ const Landing = () => {
             </div>
           </div>
           <Tours />
-          <Flights />
+          <Flights flights={searchedFlights?.data} carriers={searchedFlights?.dictionaries?.carriers} handleSaveFlights={handleSaveFlights} validateSaveStatus={validateSaveStatus} />
           <Guidelines />
         </div>
       </div>
