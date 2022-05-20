@@ -32,7 +32,6 @@ const Landing = () => {
     if (loading) {
       return null;
     } try {
-      setLoading(true);
       // validations here
       if (!(departingDate && departingLocation && goingToLocation)) {
         setError('Please enter all required fields!!');
@@ -52,7 +51,10 @@ const Landing = () => {
 
       if (goingToLocation === departingLocation) {
         setError('Please select To location different than From!!');
+        return;
       }
+
+      setLoading(true);
       const countryCode = airpotCodes.find(e => e.code === goingToLocation)?.countryCode || 'CN';
       const flights = await fetchAvalibaleFilghts(departingDate, goingToDate, departingLocation, goingToLocation);
       const tours = await fetchAvalibaleTours(goingToLocation);
@@ -162,10 +164,11 @@ const Landing = () => {
               <ColoredIconBigButton title={loading ? 'Searching....' : 'Search'} onClick={() => handleSearch()} />
             </div>
           </div>
-          <Tours tours={searchedTours} handleSaveTours={handleSaveTours} validateSaveStatus={validateTourSaveStatus} />
+          <Tours tours={searchedTours} handleSaveTours={(e) => handleSaveTours(e)} validateSaveStatus={validateTourSaveStatus} />
           <Flights flights={searchedFlights?.data} carriers={searchedFlights?.dictionaries?.carriers} handleSaveFlights={handleSaveFlights} validateSaveStatus={validateSaveStatus} />
           <Guidelines data={searchedGuideLines} />
         </div>
+        {error && <Alert type="error" message={error} onClose={() => setError('')} />}
       </div>
     );
   }
