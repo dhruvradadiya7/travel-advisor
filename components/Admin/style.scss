@@ -149,6 +149,10 @@
                     color: $color-primary;
                     font-size: 16px;
                 }
+
+                &.half{
+                    width: calc(25% / 2);
+                }
             }
 
             &.table-header {

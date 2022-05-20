@@ -2,6 +2,7 @@ import { ReactComponent as Play } from 'icons/play.svg';
 import { ReactComponent as Pause } from 'icons/pause.svg';
 import { useState, useEffect } from 'react';
 import getObj, { createNUpdateObj } from 'utils/fetchfb';
+import { useAuth } from 'utils/AuthContext';
 
 const TabelRow = ({ user, index, onClick }) => (
   <div className="row frcs">
@@ -20,7 +21,8 @@ const TabelRow = ({ user, index, onClick }) => (
   </div>
 );
 
-const UserManager = () => {
+const UserManager = ({ setError }) => {
+  const { currentUser } = useAuth();
   const [data, setData] = useState(null);
 
   const getData = async () => {
@@ -28,7 +30,15 @@ const UserManager = () => {
     setData(result);
   };
 
-  const blockUser = (uid, userState) => {
+  const blockUser = (uid, user, userState) => {
+    if (user.role === 'admin') {
+      setError('You can not block admin user!!');
+      return;
+    }
+    if (uid === currentUser.uid) {
+      setError('You can not block yourself!!');
+      return;
+    }
     createNUpdateObj(`/users/${uid}/blocked`, !userState);
     getData();
   };
@@ -63,7 +73,7 @@ const UserManager = () => {
         </div>
 
         {Object.entries(data).map(([id, user], index) => (
-          <TabelRow user={user} id={id} key={index} index={index} onClick={() => blockUser(id, user.blocked)} />
+          <TabelRow user={user} id={id} key={index} index={index} onClick={() => blockUser(id, user, user.blocked)} setError={setError} />
         ))}
       </div>
     </div>

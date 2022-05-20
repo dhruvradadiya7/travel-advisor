@@ -236,6 +236,7 @@
     border: none;
     border-radius: 5px;
     height: 40px;
+    cursor: pointer;
     .add-lbl {
         margin-top: 0px;
         color: #fff;
@@ -349,5 +350,33 @@
                 margin: 10px 0;
             }
         }
+    }
+}
+
+
+// Guidelines
+.landing-searched_guideline-content{
+    color: $color-text-content;
+    margin: 20px 0;
+    h2{
+        font-size: 28px;
+        line-height: 32px;
+        margin: 0 0 5px 0;
+    }
+    p, a{
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0;
+        text-decoration: none;
+    }
+    h3{
+        font-size: 22px;
+        line-height: 30px;
+        margin: 0 0 5px 0;
+    }
+
+    .row{
+        width: 100%;
+        margin: 3px 0;
     }
 }
