@@ -2,13 +2,16 @@ import Header from 'components/shared/Header';
 import { useEffect, useState } from 'react';
 import getObj from 'utils/fetchfb';
 import ManageCard from './ManageCard';
+import  getTravelRestrictionsByCountry from 'containers/GuidelinesContainer';
 
 const Guidelines = () => {
-  const [airpotCodes, setAirportCode] = useState([]);
+  const [countryCodes, setCountryCode] = useState([]);
   const getAirportCodes = async () => {
     try {
-      const result = await getObj('/AirportCodes');
-      setAirportCode(Object.values(result));
+      const result = await getObj('/CountryCode');
+      setCountryCode(Object.values(result));
+      // const datasam = await getTravelRestrictionsByCountry('US');
+      //console.log(datasam.data.area.name);
     } catch (e) {
       console.log(e);
     }
@@ -21,8 +24,8 @@ const Guidelines = () => {
       <Header />
       <h1>Guidelines</h1>
       <div className="users">
-        {airpotCodes.map((airpotCodes) => (
-          <ManageCard airpotCodes={airpotCodes} />
+        {countryCodes.map((countryCode, index) => (
+          <ManageCard  key={index} countryCode={countryCode} />
         ))}
       </div>
     </div>
