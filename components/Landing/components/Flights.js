@@ -118,15 +118,15 @@ export const Flight = ({ data, handleSaveFlights, saved }) => {
                 </div>
 
                 {segments[index + 1] && (
-                <div className="search-flight-layover_divider">
-                  <div className="search-flight-layover fccc">
-                    <p>
-                      layover
-                      {' '}
-                      {segment?.arrival?.at && segments[index + 1].departure?.at && secondsToDhms(dayjs(segments[index + 1].departure?.at).diff(segment?.arrival?.at, 'seconds', true))}
-                    </p>
+                  <div className="search-flight-layover_divider">
+                    <div className="search-flight-layover fccc">
+                      <p>
+                        layover
+                        {' '}
+                        {segment?.arrival?.at && segments[index + 1].departure?.at && secondsToDhms(dayjs(segments[index + 1].departure?.at).diff(segment?.arrival?.at, 'seconds', true))}
+                      </p>
+                    </div>
                   </div>
-                </div>
                 )}
 
               </React.Fragment>
@@ -150,13 +150,13 @@ const Flights = ({
       </h2>
 
       <div className="searched-card_components fcss">
-        {flights.map((flightObj, index) => {
+        {flights.length ? flights.map((flightObj, index) => {
           const segments = flightObj?.itineraries[0]?.segments;
           const updateSegments = segments.map((e) => ({ ...e, carrierCode: carriers[e.carrierCode] || e.carrierCode }));
           flightObj.itineraries[0].segments = updateSegments;
           const saved = validateSaveStatus(flightObj);
           return <Flight key={index} data={flightObj} carrierCode={carriers} handleSaveFlights={() => handleSaveFlights(flightObj)} saved={saved} />;
-        })}
+        }) : <h4 className='empty-message'>No flights found for searched location!</h4>}
       </div>
     </div>
   </div>

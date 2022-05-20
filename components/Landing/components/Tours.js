@@ -54,10 +54,10 @@ const Tours = ({
         Tours & activites
       </h2>
       <div className="searched-card_tour-component fcss">
-        {tours.map((tour, index) => {
+        {tours.length ? tours.map((tour, index) => {
           const saved = validateSaveStatus(tour);
           return <Tour data={tour} handleSaveFlights={() => handleSaveTours(tour)} saved={saved} key={index} />;
-        })}
+        }) : <h4 className='empty-message'>No tours & activites found for searched location!</h4>}
       </div>
     </div>
   </div>
