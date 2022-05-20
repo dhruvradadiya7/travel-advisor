@@ -111,6 +111,14 @@
         width: 100%;
         margin: 20px 0;
     }
+
+    .empty-message{
+        color: $color-text-content;
+        font-size: 16px;
+        line-height: 18px;
+        margin: 0;
+        font-weight: 500;
+    }
 }
 
 .landing-searched_title {
