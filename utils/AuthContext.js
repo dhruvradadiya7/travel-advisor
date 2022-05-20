@@ -42,13 +42,13 @@ const AuthProvider = ({ children }) => {
   // fetching all masters
   const fetchMasters = async () => {
     // Get Airport codes here.....
+    const result = await getObj('/AirportCodes');
+    setMasters(Object.values(result));
   };
 
   useEffect(() => {
-    if (currentUser?.uid) {
-      fetchMasters();
-    }
-  }, [currentUser?.uid]);
+    fetchMasters();
+  }, []);
 
   const value = {
     currentUser,

@@ -1,39 +1,42 @@
 .guidelines-body{
-    width: 100%;
-}
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+  width: 100%;
+  .guidelines-content{
     width: 80%;
-    background-color: #EEEEEE;
-    margin: auto;
-    margin-bottom: 2%;
-    font-weight: 500;
-    font-size: x-large;
-    .cnt-code{
-     p{
-       margin: 0%;
-     }
-    }
-    .show-hide{
-        color: #C4C4C4;
-        font-size: medium;
+    max-width: 1200px;
+    margin: 60px auto;
+  }
+}
+
+
+.guideline-card_box{
+  width: 100%;
+  background-color: $background-over;
+  border-radius: 5px;
+  margin: 20px 0;
+  .guideline-card_header{
+    width: calc(100% - 40px);
+    padding: 20px;
+    h3{
+      font-size: 24px;
+      line-height: 28px;
+      margin: 0;
+      font-weight: 500;
     }
   }
-  
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+  .guideline-card_content{
+    .searched-card-container{
+      padding: 0;
+      .searched-card-content{
+        width: calc(100% - 40px);
+        padding: 10px 20px;
+      }
+      .landing-searched_title{
+        display: none
+      }
+      .landing-searched_guideline-content{
+        margin: 0;
+      }
+    }
   }
-  
-  .container {
-    padding: 2px 16px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2%;
-    
 }
-.detail-card{
-    margin-left: 3%;
-   
-}
-  

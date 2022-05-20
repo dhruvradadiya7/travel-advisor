@@ -1,39 +1,63 @@
 import { ReactComponent as Save } from 'icons/save-icon.svg';
 import { ReactComponent as Browser } from 'icons/browser.svg';
 
-export const Tour = () => (
+export const truncTitle = (title, length) => {
+  let newTitle;
+  try {
+    newTitle = title.substring(0, length);
+    if (newTitle.length === title.length) {
+      return title;
+    }
+    return `${newTitle}...`;
+  } catch {
+    return title;
+  }
+};
+
+export const Tour = ({ data = {}, handleSaveFlights, saved }) => (
   <div className="searched-card_tour frss">
-    <img src="https://images.musement.com/cover/0001/07/prado-museum-tickets_header-6456.jpeg?w=500" alt="searched-card_img" />
+    <img src={data.pictures?.[0]} alt="searched-card_img" />
     <div className="searched-card_tour-content fccs">
-      <h3>Skip-the-line tickets to the Prado Museum</h3>
+      <h3>{data.name}</h3>
       <p>
-        Book your tickets for the Prado Museum in Madrid, discover masterpieces
-        by Velázquez, Goya, Mantegna, Raphael, Tintoretto and access all
-        temporary exhibitions.
+        {truncTitle(data.shortDescription, 180)}
       </p>
-      <h4>Ratings: 4.5</h4>
+      <h4>
+        Price:
+        {' '}
+        {data?.price?.amount}
+        {' '}
+        {data?.price?.currencyCode}
+      </h4>
     </div>
     <div className="searched-card_tour-action-box fcss">
-      <button className="global_save-btn frsc white" type="button">
+      <button className="global_save-btn frsc white" type="button" onClick={() => window.open(data.bookingLink, '_blank')}>
         <Browser className="add-btn" />
         <h2 className="add-lbl">Book Now</h2>
       </button>
-      <button className="global_save-btn frsc" type="button">
+      <button className="global_save-btn frsc" type="button" onClick={handleSaveFlights}>
         <Save className="add-btn" />
-        <h2 className="add-lbl">Save</h2>
+        <h2 className="add-lbl">{saved ? 'Saved' : 'Save'}</h2>
       </button>
     </div>
   </div>
 );
 
-const Tours = () => (
+const Tours = ({
+  tours, handleSaveTours, validateSaveStatus, saved,
+}) => (
   <div className="searched-card-container tours">
     <div className="searched-card-content fcss">
-      <h2 className="landing-searched_title"> Tours & activites</h2>
+      <h2 className="landing-searched_title">
+        {saved ? 'Saved' : 'Available'}
+        {' '}
+        Tours & activites
+      </h2>
       <div className="searched-card_tour-component fcss">
-        <Tour />
-        <Tour />
-        <Tour />
+        {tours.map((tour, index) => {
+          const saved = validateSaveStatus(tour);
+          return <Tour data={tour} handleSaveFlights={() => handleSaveTours(tour)} saved={saved} key={index} />;
+        })}
       </div>
     </div>
   </div>

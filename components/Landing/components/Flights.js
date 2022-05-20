@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { ReactComponent as Save } from 'icons/save-icon.svg';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export const parseDuration = (duration) => duration.slice(2).replace('H', 'H ');
 
@@ -79,7 +79,7 @@ export const Flight = ({ data, handleSaveFlights, saved }) => {
         <div className="search-flight_detailed-component">
           {
             segments.map((segment, index) => (
-              <>
+              <React.Fragment key={index}>
                 <div className="search-flight_detailed-row frsc">
                   <div className="searched-flight_info-block fccc">
                     <h3>{segment?.departure?.iataCode}</h3>
@@ -129,7 +129,7 @@ export const Flight = ({ data, handleSaveFlights, saved }) => {
                 </div>
                 )}
 
-              </>
+              </React.Fragment>
             ))
           }
         </div>
@@ -138,24 +138,28 @@ export const Flight = ({ data, handleSaveFlights, saved }) => {
   );
 };
 
-const Flights = ({ flights = [], carriers = [], handleSaveFlights, validateSaveStatus }) => {
-  return (
-    <div className="searched-card-container">
-      <div className="searched-card-content fcss">
-        <h2 className="landing-searched_title">Available Flights</h2>
+const Flights = ({
+  flights = [], carriers = [], handleSaveFlights, validateSaveStatus, saved,
+}) => (
+  <div className="searched-card-container">
+    <div className="searched-card-content fcss">
+      <h2 className="landing-searched_title">
+        {saved ? 'Saved' : 'Available'}
+        {' '}
+        Flights
+      </h2>
 
-        <div className="searched-card_components fcss">
-          {flights.map((flightObj, index) => {
-            const segments = flightObj?.itineraries[0]?.segments;
-            const updateSegments = segments.map((e) => ({ ...e, carrierCode: carriers[e.carrierCode] || e.carrierCode }));
-            flightObj.itineraries[0].segments = updateSegments;
-            const saved = validateSaveStatus(flightObj);
-            return <Flight data={flightObj} carrierCode={carriers} handleSaveFlights={() => handleSaveFlights(flightObj)} saved={saved} />;
-          })}
-        </div>
+      <div className="searched-card_components fcss">
+        {flights.map((flightObj, index) => {
+          const segments = flightObj?.itineraries[0]?.segments;
+          const updateSegments = segments.map((e) => ({ ...e, carrierCode: carriers[e.carrierCode] || e.carrierCode }));
+          flightObj.itineraries[0].segments = updateSegments;
+          const saved = validateSaveStatus(flightObj);
+          return <Flight key={index} data={flightObj} carrierCode={carriers} handleSaveFlights={() => handleSaveFlights(flightObj)} saved={saved} />;
+        })}
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default Flights;
