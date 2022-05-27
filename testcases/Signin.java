@@ -1,4 +1,3 @@
-package fmSelTest;
 
 import static org.junit.Assert.*;
 
