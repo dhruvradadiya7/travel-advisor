@@ -61,13 +61,13 @@ const TabelRow = ({
       <div className="col frsc">
         {(add || edit) ? (
           <>
-            <Check className="action-btn check" onClick={handleSave} />
-            <Close className="action-btn close" onClick={() => (edit ? setEdit(false) : close(false))} />
+            <div><Check className="action-btn check" onClick={handleSave} /></div>
+            <div><Close className="action-btn close" onClick={() => (edit ? setEdit(false) : close(false))} /></div>
           </>
         ) : (
           <>
-            <Edit className="action-btn edit" onClick={() => setEdit(true)} />
-            <Delete className="action-btn delete" onClick={() => onDelete()} />
+            <div><Edit className="action-btn edit" onClick={() => setEdit(true)} /></div>
+            <div><Delete className="action-btn delete" onClick={() => onDelete()} /></div>
           </>
         )}
       </div>
