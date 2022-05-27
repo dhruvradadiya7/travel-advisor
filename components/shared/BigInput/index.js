@@ -40,7 +40,7 @@ export const BigInputDD = ({
         {title}
         {required && <span className="required-mark">*</span>}
       </h3>
-      <input placeholder={placeholder} type={type} value={text} onChange={(e) => handleInputChange(e.target.value)} />
+      <input placeholder={placeholder} type={type} value={text} onChange={(e) => handleInputChange(e.target.value)} onBlur={() => onChange(text)} />
 
       {!!filteredData.length && (
       <div className="input-box_dd-options fcss">
