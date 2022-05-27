@@ -34,13 +34,20 @@ export const BigInputDD = ({
     }
   };
 
+  const onBlurChange = () => {
+    const vLower = text?.toLowerCase();
+    if (filteredData.length === 1 && filteredData.find((e) => e.code?.toLowerCase() === vLower)) {
+      onChange(text);
+    }
+  };
+
   return (
     <div className={`input-box ${half && 'half'}`} key={title}>
       <h3 className="title">
         {title}
         {required && <span className="required-mark">*</span>}
       </h3>
-      <input placeholder={placeholder} type={type} value={text} onChange={(e) => handleInputChange(e.target.value)} />
+      <input placeholder={placeholder} type={type} value={text} onChange={(e) => handleInputChange(e.target.value)} onBlur={() => onBlurChange()} />
 
       {!!filteredData.length && (
       <div className="input-box_dd-options fcss">
