@@ -34,59 +34,59 @@ public class Register {
 	}
 	
 	
-//	//username is empty
-//	@Test
-//	public void test1() throws InterruptedException {
-//		submit.click();
-//		checkMessage("Please enter username!");
-//	}
-//	
-//	
-//	//only user name entered
-//	@Test
-//	public void test2() throws InterruptedException {
-//		username.sendKeys("testuser");
-//		submit.click();
-//		checkMessage("Firebase: Error (auth/invalid-email).");
-//	}
-//	
-//	
-//	//empty passwords
-//	@Test
-//	public void test3() throws InterruptedException {
-//		reset();
-//		Thread.sleep(2000);
-//		username.sendKeys("testuser");
-//		email.sendKeys("testuser3@gmail.com");
-//		submit.click();
-//		Thread.sleep(2000);
-//		checkMessage("Firebase: Error (auth/internal-error).");
-//	}
-//	
-//	//empty conform password
-//	@Test
-//	public void test4() throws InterruptedException {
-//		reset();
-//		username.sendKeys("testuser");
-//		email.sendKeys("testuser3@gmail.com");
-//		password.sendKeys("test123");
-//		submit.click();
-//		Thread.sleep(2000);
-//		checkMessage("Passwords do not match!");
-//	}
-//	
-//	//empty username
-//	@Test
-//	public void test5() {
-//		reset();
-//		email.sendKeys("testuser3@gmail.com");
-//		password.sendKeys("test123");
-//		cPassword.sendKeys("test123");
-//		submit.click();
-//		String currentUrl = driver.getCurrentUrl();
-//		System.out.print(currentUrl);
-//		Assert.assertEquals(currentUrl, "https://travel-advisor-self.vercel.app/register");
-//	}
+	//username is empty
+	@Test
+	public void test1() throws InterruptedException {
+		submit.click();
+		checkMessage("Please enter username!");
+	}
+	
+	
+	//only user name entered
+	@Test
+	public void test2() throws InterruptedException {
+		username.sendKeys("testuser");
+		submit.click();
+		checkMessage("Firebase: Error (auth/invalid-email).");
+	}
+	
+	
+	//empty passwords
+	@Test
+	public void test3() throws InterruptedException {
+		reset();
+		Thread.sleep(2000);
+		username.sendKeys("testuser");
+		email.sendKeys("testuser3@gmail.com");
+		submit.click();
+		Thread.sleep(2000);
+		checkMessage("Firebase: Error (auth/internal-error).");
+	}
+	
+	//empty conform password
+	@Test
+	public void test4() throws InterruptedException {
+		reset();
+		username.sendKeys("testuser");
+		email.sendKeys("testuser3@gmail.com");
+		password.sendKeys("test123");
+		submit.click();
+		Thread.sleep(2000);
+		checkMessage("Passwords do not match!");
+	}
+	
+	//empty username
+	@Test
+	public void test5() {
+		reset();
+		email.sendKeys("testuser3@gmail.com");
+		password.sendKeys("test123");
+		cPassword.sendKeys("test123");
+		submit.click();
+		String currentUrl = driver.getCurrentUrl();
+		System.out.print(currentUrl);
+		Assert.assertEquals(currentUrl, "https://travel-advisor-self.vercel.app/register");
+	}
 	
 	
 	//sucesss test case
@@ -133,8 +133,8 @@ public class Register {
 	}
 	
 	
-//	@AfterClass
-//	public static void afterClass() {
-//		driver.close();
-//	}
+	@AfterClass
+	public static void afterClass() {
+		driver.close();
+	}
 }
