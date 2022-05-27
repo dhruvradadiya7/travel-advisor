@@ -36,7 +36,7 @@ export const BigInputDD = ({
 
   const onBlurChange = () => {
     const vLower = text?.toLowerCase();
-    if (filteredData.length === 1 && filteredData.find((e) => e.code?.toLowerCase()?.includes(vLower))) {
+    if (filteredData.length === 1 && filteredData.find((e) => e.code?.toLowerCase() === vLower)) {
       onChange(text);
     }
   };
