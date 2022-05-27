@@ -9,13 +9,12 @@ import setAccessToken, { getAccessToken } from 'containers/FlightsFunctions';
 /*
  * Custom app component to modify app rendering
  */
-const isAdminRoutes = (e) => ['/users'].includes(e);
+const isAdminRoutes = (e) => ['/manage-sources'].includes(e);
 const Wrapper = ({ children }) => {
   const router = useRouter();
   const { currentUser, isAdmin } = useAuth();
-  if (currentUser?.uid && isAdminRoutes(router.pathname) && !isAdmin) {
+  if ((!currentUser?.uid && isAdminRoutes(router.pathname)) || (currentUser?.uid && isAdminRoutes(router.pathname) && !isAdmin)) {
     router.push('/');
-    return '';
   }
 
   useEffect(() => {

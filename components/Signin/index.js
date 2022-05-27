@@ -37,6 +37,10 @@ const Signin = () => {
 
   useEffect(() => {
     if (currentUser?.uid) {
+      if (currentUser?.blocked) {
+        logout();
+        return setError('User is blocked, please contact admin to resolve issue!');
+      }
       router.push('/');
     }
   }, [currentUser?.uid]);
