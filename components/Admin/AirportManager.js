@@ -9,7 +9,7 @@ import Alert from 'components/widgets/Alert';
 import { useAuth } from 'utils/AuthContext';
 
 const TabelRow = ({
-  add, close, id, data = {}, onEdit, onAdd, onDelete, setError,
+  add, close, id, data = {}, onEdit, onAdd, onDelete, setError, allData,
 }) => {
   const [code, setCode] = useState(data?.code || '');
   const [name, setName] = useState(data?.name || '');
@@ -20,6 +20,11 @@ const TabelRow = ({
   const handleSave = () => {
     if (!(code && name && country && countryCode)) {
       setError('Please enter all required fields!!');
+      return;
+    }
+    const foundData = Object.entries(allData).find(([id, e]) => e.code === code.toUpperCase());
+    if (foundData && foundData[0] !== id) {
+      setError('Airport code is already added before!!');
       return;
     }
     if (countryCode.length > 2) {
@@ -134,10 +139,10 @@ const AirportManager = ({ setError }) => {
             <p>Action</p>
           </div>
         </div>
-        {data && Object.entries(data).map(([id, data], index) => (
-          <TabelRow data={data} id={id} key={index} index={index} onEdit={onEdit} onDelete={() => onDelete(id)} setError={setError} />
+        {data && Object.entries(data).map(([id, rowData], index) => (
+          <TabelRow data={rowData} id={id} allData={data} key={index} index={index} onEdit={onEdit} onDelete={() => onDelete(id)} setError={setError} />
         ))}
-        {add && <TabelRow add close={setAdd} onAdd={onAdd} setError={setError} />}
+        {add && <TabelRow add close={setAdd} onAdd={onAdd} setError={setError} allData={data} />}
       </div>
     </div>
   );
