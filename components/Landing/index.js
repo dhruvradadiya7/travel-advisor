@@ -8,9 +8,11 @@ import getObj, { createNUpdateObj, pushObj } from 'utils/fetchfb';
 import Alert from 'components/widgets/Alert';
 import dayjs from 'dayjs';
 import { useAuth } from 'utils/AuthContext';
+import { useRouter } from 'next/router';
 import Guidelines from './components/Guidelines';
 import Tours from './components/Tours';
 import Flights from './components/Flights';
+import { flightsData, tourData, guidelineData } from './data';
 
 const Landing = () => {
   const [departingDate, setDepartingDate] = useState('');
@@ -27,6 +29,7 @@ const Landing = () => {
   const [loading, setLoading] = useState(false);
   const [searchedGuideLines, setSearchedGuideLines] = useState(null);
   const { currentUser } = useAuth();
+  const router = useRouter();
 
   const handleSearch = async () => {
     if (loading) {
@@ -55,7 +58,7 @@ const Landing = () => {
       }
 
       setLoading(true);
-      const countryCode = airpotCodes.find(e => e.code === goingToLocation)?.countryCode || 'CN';
+      const countryCode = airpotCodes.find((e) => e.code === goingToLocation)?.countryCode || 'CN';
       const flights = await fetchAvalibaleFilghts(departingDate, goingToDate, departingLocation, goingToLocation);
       const tours = await fetchAvalibaleTours(goingToLocation);
       const guideLines = await fetchGuideLines(countryCode);
@@ -103,6 +106,19 @@ const Landing = () => {
     }
   };
 
+  const parseQueryData = () => {
+    const { departingDate: departingDateQ, departingLocation: departingLocationQ, goingToLocation: goingToLocationQ } = router.query;
+    if (departingDateQ && departingLocationQ && goingToLocationQ) {
+      setDepartingDate(dayjs(departingDateQ).format('YYYY-MM-DD'));
+      setDepartingLocation(departingLocationQ);
+      setGoingToLocation(goingToLocationQ);
+      setSearchedState(true);
+      setSearchedFlights(flightsData);
+      setSearchedTours(tourData);
+      setSearchedGuideLines(guidelineData);
+    }
+  };
+
   const validateSaveStatus = (obj) => Object.values(savedFlights).includes(JSON.stringify(obj));
   const validateTourSaveStatus = (obj) => Object.values(savedTours).includes(JSON.stringify(obj));
 
@@ -110,6 +126,7 @@ const Landing = () => {
     getAirportCodes();
     getSavedFlights();
     getSavedTours();
+    parseQueryData();
   }, []);
 
   const handleSaveFlights = async (flightObj) => {
@@ -149,6 +166,7 @@ const Landing = () => {
     }
   };
 
+  console.log(searchedFlights, searchedTours, searchedGuideLines);
 
   if (searchedState) {
     return (
