@@ -166,8 +166,6 @@ const Landing = () => {
     }
   };
 
-  console.log(searchedFlights, searchedTours, searchedGuideLines);
-
   if (searchedState) {
     return (
       <div className="landing-body">
