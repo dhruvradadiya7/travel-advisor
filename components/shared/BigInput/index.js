@@ -38,6 +38,8 @@ export const BigInputDD = ({
     const vLower = text?.toLowerCase();
     if (filteredData.length === 1 && filteredData.find((e) => e.code?.toLowerCase() === vLower)) {
       onChange(text);
+    } else if (text === '') {
+      onChange('');
     }
   };
 
