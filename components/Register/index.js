@@ -12,7 +12,7 @@ import { ReactComponent as RightArrow } from 'icons/rightArrow.svg';
 import { createNUpdateObj } from 'utils/fetchfb';
 
 const Register = () => {
-  const [remeber, setRemeber] = useState(false);
+  const [terms, setTerms] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -32,6 +32,9 @@ const Register = () => {
     }
     if (password !== cPassword) {
       return setError('Passwords do not match!');
+    }
+    if (!terms) {
+      return setError('Please select terms & conditions!!');
     }
     try {
       setError('');
@@ -110,8 +113,8 @@ const Register = () => {
             <div className="content-line">
               <BigCheckInput
                 title="Agree with Terms & Conditions"
-                checked={remeber}
-                setChecked={setRemeber}
+                checked={terms}
+                setChecked={setTerms}
               />
             </div>
             <ColoredIconBigButton
