@@ -15,7 +15,6 @@ const Dashboard = () => {
   const [dashTours, setDashTours] = useState([]);
 
   const getSavedFlights = async () => {
-    console.log('here', currentUser?.uid);
     if (currentUser?.uid) {
       try {
         const result = await getObj(`${currentUser?.uid}/flights`);
@@ -69,7 +68,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    if (!currentUser.uid) {
+    if (!currentUser?.uid) {
       router.push('/');
     } else {
       getSavedFlights();
