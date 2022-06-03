@@ -52,22 +52,22 @@ const TabelRow = ({
   return (
     <div className="row frcs">
       <div className="col half fccs">
-        {(add || edit) ? <input onChange={(e) => setCode(e.target.value)} value={code} placeholder="code" /> : <p>{data.code}</p>}
+        {(add || edit) ? <input onChange={(e) => setCode(e.target.value)} value={code} placeholder="code" id="code-input" /> : <p>{data.code}</p>}
       </div>
       <div className="col fccs">
-        {(add || edit) ? <input onChange={(e) => setName(e.target.value)} value={name} placeholder="airport name" /> : <p>{data.name}</p>}
+        {(add || edit) ? <input onChange={(e) => setName(e.target.value)} value={name} placeholder="airport name" id="name-input" /> : <p>{data.name}</p>}
       </div>
       <div className="col fccs">
-        {(add || edit) ? <input onChange={(e) => setCountry(e.target.value)} value={country} placeholder="country" /> : <p>{data.country}</p>}
+        {(add || edit) ? <input onChange={(e) => setCountry(e.target.value)} value={country} placeholder="country" id="country-input" /> : <p>{data.country}</p>}
       </div>
       <div className="col half fccs">
-        {(add || edit) ? <input onChange={(e) => setCountryCode(e.target.value)} value={countryCode} placeholder="country code" /> : <p>{data.countryCode}</p>}
+        {(add || edit) ? <input onChange={(e) => setCountryCode(e.target.value)} value={countryCode} placeholder="country code" id="countryCode-input" /> : <p>{data.countryCode}</p>}
       </div>
       <div className="col frsc">
         {(add || edit) ? (
           <>
-            <div><Check className="action-btn check" onClick={handleSave} /></div>
-            <div><Close className="action-btn close" onClick={() => (edit ? setEdit(false) : close(false))} /></div>
+            <div><Check className="action-btn check" id="check-input" onClick={handleSave} /></div>
+            <div><Close className="action-btn close" id="close-input" onClick={() => (edit ? setEdit(false) : close(false))} /></div>
           </>
         ) : (
           <>
