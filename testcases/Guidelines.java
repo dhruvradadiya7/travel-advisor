@@ -14,6 +14,7 @@ public class Guidelines {
 	public void beforeAll() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "/Users/rajnish/Documents/Codes/test/chromedriver102");
 		driver= new ChromeDriver();
+		driver.manage().window().maximize();
 		driver.get("https://travel-advisor-self.vercel.app/guidelines");
 		Thread.sleep(3000);
 	}
