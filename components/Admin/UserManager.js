@@ -16,7 +16,9 @@ const TabelRow = ({ user, index, onClick }) => (
       <p>{user.role}</p>
     </div>
     <div className="col frsc block">
+      <div>
       {user.blocked ? <Play className="action-btn edit" onClick={onClick} /> : <Pause className="action-btn delete" onClick={onClick} />}
+      </div>
     </div>
   </div>
 );
