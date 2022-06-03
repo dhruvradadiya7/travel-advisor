@@ -15,6 +15,7 @@ public class SearchResults {
 	public void beforeAll() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "/Users/rajnish/Documents/Codes/test/chromedriver102");
 		driver= new ChromeDriver();
+		driver.manage().window().maximize();
 		driver.get("https://travel-advisor-self.vercel.app/?departingDate=06/04/2022&departingLocation=YUL&goingToLocation=AMD");
 		Thread.sleep(3000);
 	}
