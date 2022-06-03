@@ -21,26 +21,27 @@ public class SearchResults {
 
 	
 	@Test
-	// tour title
+	// Validate if available tours exist
 	public void test1() throws InterruptedException {
 		checkExistance("//*[@id=\"__next\"]/div/div/div/div[3]/div/h2");
 	}
 	
 	@Test
-	// price text
+	// Validate if prices includes inside each tour card
 	public void test2() throws InterruptedException {
 		checkExistance("//*[@id=\"__next\"]/div/div/div/div[3]/div/div/div[1]/div[1]/h4");
 	}
 	
 	
 	@Test
-	// guidelines text
+	// Validate if guideline section exist
 	public void test3() throws InterruptedException {
 		checkExistance("//*[@id=\"__next\"]/div/div/div/div[5]/div/h2");
 	}
 	
 	
 	@Test
+	// Trying to click save button without signin
 	public void test4() throws InterruptedException {
 		WebElement tourSave = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[3]/div/div/div[1]/div[2]/button[2]"));
 		tourSave.click();
@@ -50,6 +51,7 @@ public class SearchResults {
 	
 	
 	@Test
+	// Validate if save tours works for logged-in user
 	public void test5() throws InterruptedException {
 		signIn();
 		WebElement tourSave = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[3]/div/div/div[1]/div[2]/button[2]"));
@@ -67,6 +69,7 @@ public class SearchResults {
 	}
 	
 	@Test
+	// Validate if book now button is visible for tour card
 	public void test6() throws InterruptedException {
 		WebElement bookBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[3]/div/div/div[1]/div[2]/button[1]"));
 		Assert.assertTrue(bookBtn.isDisplayed());
@@ -74,15 +77,17 @@ public class SearchResults {
 	
 	
 	@Test
+	// Trying to save flight without signin
 	public void test7() throws InterruptedException {
-		WebElement tourSave = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[4]/div/div/div[1]/div/div[4]/button[1]"));
-		tourSave.click();
+		WebElement flightSave = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[4]/div/div/div[1]/div/div[4]/button[1]"));
+		flightSave.click();
 		
 		checkMessage("Signin is required to save flights!");
 	}
 	
 	
 	@Test
+	// Validating save flight with logged-in user
 	public void test8() throws InterruptedException {
 		signIn();
 		WebElement flightSave = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[4]/div/div/div[1]/div/div[4]/button[1]"));
@@ -101,6 +106,7 @@ public class SearchResults {
 	
 	
 	@Test
+	// Validating toggle of show/hide details for searched flight card
 	public void test9() throws InterruptedException {
 		Thread.sleep(1000);
 		WebElement showDetail = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[4]/div/div/div[1]/div/div[4]/button[2]"));

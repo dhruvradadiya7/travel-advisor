@@ -19,6 +19,7 @@ public class Navigations {
 	}
 	
 	@Test
+	// Validate if guideline button is clickable
 	public void test1() throws InterruptedException {
 		WebElement guideBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[1]/div[2]/button[1]"));
 		guideBtn.click();
@@ -28,6 +29,7 @@ public class Navigations {
 	}
 	
 	@Test
+	// Validate if register button is clickable
 	public void test2() throws InterruptedException {
 		WebElement registerBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[1]/div[2]/button[2]"));
 		registerBtn.click();
@@ -37,6 +39,7 @@ public class Navigations {
 	}
 	
 	@Test
+	// validate if signin button is clickable
 	public void test3() throws InterruptedException {
 		WebElement siginBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[1]/div[2]/button[3]"));
 		siginBtn.click();
@@ -46,6 +49,7 @@ public class Navigations {
 	}
 	
 	@Test
+	// check if My Dashboard button exist, for guest user
 	public void test4() throws InterruptedException {
 		WebElement dashBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[1]/div[2]/button[2]"));
 		System.out.print(dashBtn.getText());
@@ -53,6 +57,7 @@ public class Navigations {
 	}
 	
 	@Test
+	// check if My Dashboard button exist and working, for logged in user
 	public void test5() throws InterruptedException {
 		signIn();
 		Thread.sleep(1000);
@@ -64,6 +69,7 @@ public class Navigations {
 	}
 	
 	@Test
+	// Check if Manage Sources button exist, for guest user
 	public void test6() throws InterruptedException {
 		WebElement srcBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[1]/div[2]/button[3]"));
 		System.out.print(srcBtn.getText());
@@ -71,6 +77,7 @@ public class Navigations {
 	}
 	
 	@Test
+	// Check if Manage Sources button exist, for standard user
 	public void test7() throws InterruptedException {
 		WebElement siginBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[1]/div[2]/button[3]"));
 		siginBtn.click();
@@ -92,6 +99,7 @@ public class Navigations {
 	}
 	
 	@Test
+	// Check if Manage Sources button exist and working, for admin user
 	public void test8() throws InterruptedException {
 		signIn();
 		Thread.sleep(1000);
@@ -103,11 +111,13 @@ public class Navigations {
 	}
 	
 	@Test
+	// Check if logout button exist, for guest user
 	public void test9() throws InterruptedException {
 		Assert.assertEquals(driver.findElements(By.xpath("//*[@id=\"__next\"]/div/div/div[1]/div[2]/button[4]")).size(), 0);
 	}
 	
 	@Test
+	// Check if logout button exist, for logged in user
 	public void test10() throws InterruptedException {
 		signIn();
 		Thread.sleep(5000);

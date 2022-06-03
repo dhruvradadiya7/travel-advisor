@@ -22,6 +22,7 @@ public class Search {
 	}
 	
 	@Test
+	// Success scenario, with valid fields
 	public void test1() throws InterruptedException {
 		travelDate.sendKeys("15/06/2022");
 		returningDate.sendKeys("20/06/2022");
@@ -34,6 +35,7 @@ public class Search {
 	}
 	
 	@Test
+	// Success scenario, without return date
 	public void test2() throws InterruptedException {
 		travelDate.sendKeys("15/06/2022");
 		from.sendKeys("YUL");
@@ -45,6 +47,7 @@ public class Search {
 	}
 	
 	@Test
+	// Trying to submit without any field except travel-date
 	public void test3() throws InterruptedException {
 		travelDate.sendKeys("15/06/2022");
 		submit.click();
@@ -52,6 +55,7 @@ public class Search {
 	}
 	
 	@Test
+	// Trying to submit without any field except returing-date
 	public void test4() throws InterruptedException {
 		returningDate.sendKeys("20/06/2022");
 		submit.click();
@@ -60,6 +64,7 @@ public class Search {
 	
 	
 	@Test
+	// Trying to submit without any field except locations
 	public void test5() throws InterruptedException {
 		from.sendKeys("YUL");
 		to.sendKeys("AMD");
@@ -68,6 +73,7 @@ public class Search {
 	}
 	
 	@Test
+	// Trying to submit without travel date 
 	public void test6() throws InterruptedException {
 		returningDate.sendKeys("20/06/2022");
 		from.sendKeys("YUL");
@@ -77,6 +83,7 @@ public class Search {
 	}
 	
 	@Test
+	// Trying to submit with same origin and destination location
 	public void test7() throws InterruptedException {
 		travelDate.sendKeys("15/06/2022");
 		returningDate.sendKeys("20/06/2022");
@@ -87,6 +94,7 @@ public class Search {
 	}
 	
 	@Test
+	// Trying to submit with past returning date from traveling date
 	public void test8() throws InterruptedException {
 		travelDate.sendKeys("15/06/2022");
 		returningDate.sendKeys("12/06/2022");
@@ -97,6 +105,7 @@ public class Search {
 	}
 	
 	@Test
+	// Trying to submit with past traveling date from today
 	public void test9() throws InterruptedException {
 		travelDate.sendKeys("01/06/2022");
 		returningDate.sendKeys("12/06/2022");

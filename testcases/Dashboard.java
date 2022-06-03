@@ -22,6 +22,7 @@ public class Dashboard {
 	}
 	
 	@Test
+	// Trying to access dashboard without signin 
 	public void test1() throws InterruptedException {
 		driver.navigate().to("https://travel-advisor-self.vercel.app/my-dashboard");
 		Thread.sleep(2000);
@@ -30,20 +31,21 @@ public class Dashboard {
 	}
 	
 	@Test
-	// flights title
+	// if saved flights title exist
 	public void test2() throws InterruptedException {
 		signIn();
 		checkExistance("//*[@id=\"__next\"]/div/div/div/div[2]/div[1]/div/h2");
 	}
 	
 	@Test
-	// tour title
+	// if saved tour title exist
 	public void test3() throws InterruptedException {
 		signIn();
 		checkExistance("//*[@id=\"__next\"]/div/div/div/div[2]/div[2]/div/h2");
 	}
 	
 	@Test
+	// if tour card has save button with saved text
 	public void test4() throws InterruptedException {
 		signIn();
 		WebElement tourSave = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[2]/div[2]/div/div/div[1]/div[2]/button[2]"));
@@ -51,6 +53,7 @@ public class Dashboard {
 	}
 	
 	@Test
+	// check if tour card is removed after unsaved
 	public void test5() throws InterruptedException {
 		signIn();
 		List<WebElement> tourSave = driver.findElements(By.cssSelector(".searched-card_tour .global_save-btn"));
@@ -61,6 +64,7 @@ public class Dashboard {
 	}
 	
 	@Test
+	// validated if book now button is visible in tour card
 	public void test6() throws InterruptedException {
 		signIn();
 		WebElement bookBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[2]/div[2]/div/div/div[1]/div[2]/button[1]"));
@@ -68,6 +72,7 @@ public class Dashboard {
 	}
 	
 	@Test
+	// check if flight card has save button with saved text
 	public void test7() throws InterruptedException {
 		signIn();
 		WebElement flightSave = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[2]/div[1]/div/div/div[1]/div/div[4]/button[1]"));
@@ -75,6 +80,7 @@ public class Dashboard {
 	}
 	
 	@Test
+	// check if flight card is removed after unsaved
 	public void test8() throws InterruptedException {
 		signIn();
 		List<WebElement> flightSave = driver.findElements(By.cssSelector(".searched-flight_component .global_save-btn"));
@@ -86,6 +92,7 @@ public class Dashboard {
 
 	
 	@Test
+	// check if show/hide detail toggle works in flight card
 	public void test9() throws InterruptedException {
 		signIn();
 		WebElement showDetail = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div/div[2]/div[1]/div/div/div[1]/div/div[4]/button[2]"));
