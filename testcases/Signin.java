@@ -1,3 +1,4 @@
+package fmSelTest;
 
 import static org.junit.Assert.*;
 
@@ -47,7 +48,7 @@ public class Signin {
 	@Test
 	public void test3() throws InterruptedException {
 		reset();
-		email.sendKeys("testuser2@gmail.com");
+		email.sendKeys("dhruv@gmail.com");
 		submit.click();
 		checkMessage("Firebase: Error (auth/internal-error).");
 	}
@@ -65,13 +66,40 @@ public class Signin {
 	@Test
 	public void test5() throws InterruptedException {
 		reset();
-		email.sendKeys("rajnishkatharotiya.rk.rk@gmail.com");
-		password.sendKeys("test123");
+		email.sendKeys("dhruv@gmail.com");
+		password.sendKeys("Qwerty@7");
 		submit.click();
 		Thread.sleep(2000);
 		String currentUrl = driver.getCurrentUrl();
 		System.out.print(currentUrl);
 		Assert.assertEquals(currentUrl, "https://travel-advisor-self.vercel.app/");
+	}
+	
+	@Test
+	public void Test6() throws InterruptedException {
+		driver.findElement(By.xpath("//body/div[@id='__next']/div[1]/div[1]/div[2]/div[1]/div[1]/button[1]")).click();
+		Thread.sleep(2000);
+		String currentUrl = driver.getCurrentUrl();
+		System.out.print(currentUrl);
+		Assert.assertEquals(currentUrl, "https://travel-advisor-self.vercel.app/register");
+	}
+	
+	@Test
+	public void Test7() throws InterruptedException {
+		driver.findElement(By.xpath("//a[contains(text(),'Go Back To Home')]")).click();
+		Thread.sleep(2000);
+		String currentUrl = driver.getCurrentUrl();
+		System.out.print(currentUrl);
+		Assert.assertEquals(currentUrl, "https://travel-advisor-self.vercel.app/");
+	}
+	
+	@Test
+	public void Test8() throws InterruptedException {
+		driver.findElement(By.xpath("//button[contains(text(),'Forgot your password ?')]")).click();
+		Thread.sleep(2000);
+		String currentUrl = driver.getCurrentUrl();
+		System.out.print(currentUrl);
+		Assert.assertEquals(currentUrl, "https://travel-advisor-self.vercel.app/forgot-password");
 	}
 	
 	public void checkMessage(String message) throws InterruptedException {
