@@ -23,6 +23,7 @@ public class ManageUsers {
 	
 	
 	@Test
+	// attempting to block Admin user
 	public void test1() throws InterruptedException {
 		signIn();
 		Thread.sleep(1000);
@@ -33,12 +34,27 @@ public class ManageUsers {
 	
 	
 	@Test
+	// Block/Unblock standard user
 	public void test2() throws InterruptedException {
 		signIn();
 		Thread.sleep(1000);
 		WebElement blockBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[3]/div[2]/div[3]/div[4]"));
 		blockBtn.click();
 		Assert.assertEquals(driver.findElements(By.xpath("//*[@id=\"alert-message-fm\"]")).size(), 0);
+	}
+	
+	@Test
+	// Signin test with blocked user credentials
+	public void test3() throws InterruptedException {
+		email = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div/div[2]/div[1]/input"));
+		password = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div/div[2]/div[2]/input"));
+		submit = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div/div[2]/button"));
+
+		email.sendKeys("rajnishk@gmail.com");
+		password.sendKeys("test123");
+		submit.click();
+		
+		checkMessage("User is blocked, please contact admin to resolve issue!");
 	}
 	
 	public void signIn() throws InterruptedException {

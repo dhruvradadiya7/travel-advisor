@@ -23,6 +23,7 @@ public class ManageAirports {
 	}
 	
 	@Test
+	// Trying to access manage-source/admin page without login
 	public void test1() throws InterruptedException {
 		driver.navigate().to("https://travel-advisor-self.vercel.app/manage-sources");
 		Thread.sleep(2000);
@@ -31,6 +32,7 @@ public class ManageAirports {
 	}
 	
 	@Test
+	// Trying to access manage-source/admin page with standard user login  
 	public void test2() throws InterruptedException {
 		driver.navigate().to("https://travel-advisor-self.vercel.app/signin");
 		Thread.sleep(2000);
@@ -50,6 +52,7 @@ public class ManageAirports {
 	
 	
 	@Test
+	// Validated if, add new button is visible
 	public void test3() throws InterruptedException {
 		signIn();
 		driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[1]/button")).click();
@@ -60,6 +63,7 @@ public class ManageAirports {
 	
 	
 	@Test
+	// Trying to add without entering any input
 	public void test4() throws InterruptedException {
 		signIn();
 		driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[1]/button")).click();
@@ -70,6 +74,7 @@ public class ManageAirports {
 	}
 	
 	@Test
+	// Trying to add without entering any input except code
 	public void test5() throws InterruptedException {
 		signIn();
 		driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[1]/button")).click();
@@ -82,6 +87,7 @@ public class ManageAirports {
 	}
 	
 	@Test
+	// Trying to add without entering any input except code, name
 	public void test6() throws InterruptedException {
 		signIn();
 		driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[1]/button")).click();
@@ -96,6 +102,7 @@ public class ManageAirports {
 	}
 	
 	@Test
+	// Trying to add without entering country code
 	public void test7() throws InterruptedException {
 		signIn();
 		driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[1]/button")).click();
@@ -113,6 +120,7 @@ public class ManageAirports {
 	
 	
 	@Test
+	// Trying to add with same airport-code again
 	public void test8() throws InterruptedException {
 		signIn();
 		driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[1]/button")).click();
@@ -131,7 +139,28 @@ public class ManageAirports {
 	}
 	
 	@Test
+	// Trying to add with invalid country-code
 	public void test9() throws InterruptedException {
+		signIn();
+		driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[1]/button")).click();
+		Thread.sleep(2000);
+		
+		WebElement codeInput = driver.findElement(By.id("code-input"));
+		codeInput.sendKeys("YAB");
+		WebElement nameInput = driver.findElement(By.id("name-input"));
+		nameInput.sendKeys("Trudeau International Airport");
+		WebElement countryInput = driver.findElement(By.id("country-input"));
+		countryInput.sendKeys("Canada");
+		WebElement countryCInput = driver.findElement(By.id("countryCode-input"));
+		countryCInput.sendKeys("CAD");
+		driver.findElement(By.id("check-input")).click();
+		Thread.sleep(1000);
+		checkMessage("Country code should be in only 2 digits!!");
+	}
+
+	@Test
+	// Success Scenario
+	public void test10() throws InterruptedException {
 		signIn();
 		driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[1]/button")).click();
 		Thread.sleep(2000);
@@ -151,17 +180,18 @@ public class ManageAirports {
 	
 	
 	@Test
-	public void test10() throws InterruptedException {
+	// Is Edit button clickable
+	public void test11() throws InterruptedException {
 		signIn();
 		Thread.sleep(2000);
 		WebElement editBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[2]/div[5]/div[1]"));
 		editBtn.click();
-		driver.findElement(By.id("check-input")).click();
 		Assert.assertEquals(driver.findElements(By.xpath("//*[@id=\"alert-message-fm\"]")).size(), 0);
 	}
 	
 	@Test
-	public void test11() throws InterruptedException {
+	// Trying to update airport-code with same value as any other already added row 
+	public void test12() throws InterruptedException {
 		signIn();
 		Thread.sleep(2000);
 		WebElement editBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[2]/div[5]/div[1]"));
@@ -175,7 +205,8 @@ public class ManageAirports {
 	}
 	
 	@Test
-	public void test12() throws InterruptedException {
+	// Success edit scenario
+	public void test13() throws InterruptedException {
 		signIn();
 		Thread.sleep(5000);
 		WebElement editBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[2]/div[5]/div[1]"));
@@ -185,7 +216,8 @@ public class ManageAirports {
 	}
 	
 //	@Test
-//	public void test13() throws InterruptedException {
+	// delete button click
+//	public void test14() throws InterruptedException {
 //		signIn();
 //		Thread.sleep(5000);
 //		WebElement delete = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div[2]/div[2]/div[5]/div[2]"));
