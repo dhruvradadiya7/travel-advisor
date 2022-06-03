@@ -28,7 +28,7 @@ public class ManageUsers {
 	public void test1() throws InterruptedException {
 		signIn();
 		Thread.sleep(1000);
-		WebElement blockBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[3]/div[2]/div[2]/div[4]"));
+		WebElement blockBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[3]/div[2]/div[2]/div[4]/div"));
 		blockBtn.click();
 		checkMessage("You can not block admin user!!");
 	}
@@ -39,7 +39,7 @@ public class ManageUsers {
 	public void test2() throws InterruptedException {
 		signIn();
 		Thread.sleep(1000);
-		WebElement blockBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[3]/div[2]/div[3]/div[4]"));
+		WebElement blockBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[3]/div[2]/div[3]/div[4]/div"));
 		blockBtn.click();
 		Assert.assertEquals(driver.findElements(By.xpath("//*[@id=\"alert-message-fm\"]")).size(), 0);
 	}
