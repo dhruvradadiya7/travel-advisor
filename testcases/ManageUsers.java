@@ -58,6 +58,31 @@ public class ManageUsers {
 		checkMessage("User is blocked, please contact admin to resolve issue!");
 	}
 	
+	@Test
+	// Check block user signin process
+	public void test4() throws InterruptedException {
+		signIn();
+		Thread.sleep(1000);
+		WebElement blockBtn = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[3]/div[2]/div[5]/div[4]/div"));
+		blockBtn.click();
+		
+		System.setProperty("webdriver.chrome.driver", "/Users/rajnish/Documents/Codes/test/chromedriver102");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://travel-advisor-self.vercel.app/signin");
+		Thread.sleep(3000);
+		
+		email = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div/div[2]/div[1]/input"));
+		password = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div/div[2]/div[2]/input"));
+		submit = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div/div[2]/button"));
+
+		email.sendKeys("rajnishk@gmail.com");
+		password.sendKeys("test123");
+		submit.click();
+		
+		checkMessage("User is blocked, please contact admin to resolve issue!");
+	}
+	
 	public void signIn() throws InterruptedException {
 		email = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div/div[2]/div[1]/input"));
 		password = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/div/div[2]/div/div[2]/div[2]/input"));
